@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulário de Cadastro de Alunos</title>
+  <link rel="stylesheet" href="/Frontend/css/fromCadastro.css" />
+</head>
+
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar-Options" id="sidebarOptions">
+      <div class="sidebar-container">
+        <div class="img_CMB">
+          <img src="/Frontend/img/brasao_CMB.jpeg" alt="" id="brasao_CMB" />
+        </div>
+        <h1 class="sidebarTitulo">NAV</h1>
+
+        <a href="/Frontend/templates/tela_Inicio.html" class="sidebar-button consultar"
+          style="background: #485e61; color: white">
+          🏠 HOME
+        </a>
+        <a href="/Frontend/templates/formCadastro.html" class="sidebar-button cadastrar" style="background-color: #007bff; color: white"">
+            📝 Cadastrar
+          </a>
+        <a href="/Frontend/templates/consulta.html" class="sidebar-button consultar"
+          style="background: #28873e; color: white">
+          🔍 Consultar
+        </a>
+
+        <a href="/Frontend/templates/editar.html" class="sidebar-button editar" style="
+              background-color: #ffc107;
+              color: black;
+              border: 1px solid #e0a800;
+            ">
+          ✏️ Editar
+        </a>
+
+        <a href="/Frontend/templates/excluir.html" class="sidebar-button excluir" style="
+              background-color: #dc3545;
+              color: white;
+              border: 1px solid #c82333;
+            ">
+          ❌ Excluir
+        </a>
+
+        <a href="/Frontend/templates/estatistica.html" class="sidebar-button estatistica" style="
+              background-color: #6f42c1;
+              color: white;
+              border: 1px solid #563d7c;
+            ">
+          📊 Estatística
+        </a>
+
+        <a href="/Frontend/templates/validacao" class="sidebar-button validacao" style="
+              background-color: #28a745;
+              color: white;
+              border: 1px solid #218838;
+            ">
+          ✅ Validação
+        </a>
+      </div>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <div class="main-content">
+      <header>
+        <div class="titulo">
+          <h1>Colégio Militar de Brasília</h1>
+          <br />
+          <h3>Sistema de Arquivo de Pastas Digital</h3>
+          <br />
+        </div>
+      </header>
+      <!-- Seletor Institucional -->
+      <div class="institution-select">
+        <select id="institution">
+          <option value="EB">🎖️ Exército Brasileiro</option>
+          <option value="FAB">✈️ Força Aérea Brasileira</option>
+          <option value="MB">⚓ Marinha do Brasil</option>
+          <option value="BB">🎖️ Bombeiro</option>
+          <option value="PM">🎖️ Polícial Militar</option>
+          <option value="Estrangeiro">🌍 Estrangeira</option>
+          <option value="Concedido">🟡 Concursado</option>
+        </select>
+      </div>
+
+      <!-- Container do Formulário -->
+      <div class="form-container" id="formContainer">
+        <!-- Nacionalidade -->
+        <div class="nationality-select">
+          <select id="nationality">
+            <option value="brasileiro">🇧🇷 Brasileiro</option>
+            <option value="estrangeiro">🌍 Estrangeiro</option>
+          </select>
+          <div id="protocolo">
+            <label>Número de Protocolo<br />
+              <input type="text" id="protocolo_input" required maxlength="15" />
+            </label>
+          </div>
+        </div>
+
+        <!-- Informações do Aluno -->
+        <div class="form-section" id="form-cadastro">
+          <h2>Dados do Aluno</h2>
+          <div class="student-info">
+            <div class="photo-preview" id="photoPreview">
+              <div class="photo-placeholder">Clique para adicionar foto</div>
+              <img id="preview" alt="Foto do aluno" />
+              <input type="file" class="photo-upload" accept="image/*" id="photoInput" />
+            </div>
+            <div class="studentInfo">
+              <div>
+                <label>Número<br />
+                  <input type="text" required id="num_aluno" />
+                </label>
+              </div>
+              <div>
+                <label>Turma<br />
+                  <input type="text" required id="turma_aluno" />
+                </label>
+              </div>
+              <div>
+                <label>Ano Letivo<br />
+                  <input type="text" required id="ano_letivo" />
+                </label>
+              </div>
+              <div>
+                <label>Nome do Aluno<br />
+                  <input class="setNome" id="nome_Aluno" type="text" name="nome" style="text-transform: uppercase" />
+                </label>
+              </div>
+              <div>
+                <label>E-mail do Aluno<br />
+                  <input class="setEmail" id="emailAluno" type="email" required 
+                  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                  oninput="validarEmail(this)"
+>
+                </label>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="form-row">
+
+          </div>
+        </div>
+
+        <!-- Informações dos Pais -->
+        <div class="form-section">
+          <h2>Dados dos Pais</h2>
+          <div class="form-row">
+            <div>
+              <label>Nome do Pai<br />
+                <input class="setNome" id="nome_Pai" type="text" style="text-transform: uppercase" />
+              </label>
+            </div>
+            <div>
+              <label>E-mail do Pai<br />
+                <input class="setEmail" id="email_Pai" type="email" required
+                  pattern="^[a-zA-ZÀ-ÿ0-9._%+-]+@[a-zA-ZÀ-ÿ0-9.-]+\.[a-zA-Z]{2,}$" />
+              </label>
+            </div>
+            <div>
+              <label>Telefone do Pai<br />
+                <input type="tel" id="telefone_Pai" class="setTelefone" required maxlength="15" />
+              </label>
+            </div>
+            <div>
+              <label>Posto / Graduação / Civil<br />
+                <input id="setPostoGraduacao_Pai" type="text" />
+              </label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div>
+              <label>Nome da Mãe<br />
+                <input class="setNome" id="nome_Mae" type="text" style="text-transform: uppercase" />
+              </label>
+            </div>
+            <div>
+              <label>E-mail da Mãe<br />
+                <input class="setEmail" id="email_Mae" type="email" required
+                  pattern="^[a-zA-ZÀ-ÿ0-9._%+-]+@[a-zA-ZÀ-ÿ0-9.-]+\.[a-zA-Z]{2,}$" />
+              </label>
+            </div>
+            <div>
+              <label>Telefone da Mãe<br />
+                <input type="tel" class="setTelefone" id="telefone_Mae" />
+              </label>
+            </div>
+            <div>
+              <label>Posto / Graduação / Civil<br />
+                <input id="setPostoGraduacao_Mae" type="text" />
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Responsável -->
+        <div class="form-section">
+          <h2>Responsável</h2>
+          <div class="form-row">
+            <div>
+              <label>Nome<br />
+                <input class="setNome" id="nome_Responsavel" type="text" style="text-transform: uppercase" />
+              </label>
+            </div>
+
+            <div>
+              <label>E-mail<br />
+                <input class="setEmail" id="email_Responsavel" type="email" required
+                  pattern="^[a-zA-ZÀ-ÿ0-9._%+-]+@[a-zA-ZÀ-ÿ0-9.-]+\.[a-zA-Z]{2,}$" />
+              </label>
+            </div>
+            <div>
+              <label>Endereço<br />
+                <input type="text" id="enderecoResponsavel"/>
+              </label>
+            </div>
+            <div>
+              <label>Telefone<br />
+                <input type="tel" class="telefone" id="setTelefoneResponsavel" />
+              </label>
+            </div>
+          </div>
+          <div class="observacoes">
+            <label>Observações<br />
+              <input type="text" id="observacoes"/>
+            </label>
+          </div>
+        </div>
+
+        <!-- Upload de PDF -->
+        <div class="documentosAnexos">
+          <div class="pdf-upload">
+            <h2>Documentos Bloco - 1</h2>
+            <div class="pdf-upload-content">
+              <input type="file" accept=".pdf" id="doc_bloco_1" />
+              <span  class="file-name">Escolha um Arquivo</span>
+            </div>
+          </div>
+          <div class="pdf-upload">
+            <h2>Documentos Bloco - 2</h2>
+            <div class="pdf-upload-content">
+              <input type="file" accept=".pdf" id="doc_bloco_2" />
+              <span  class="file-name">Escolha um Arquivo</span>
+            </div>
+          </div>
+          <div class="pdf-upload">
+            <h2>Documentos Complementares</h2>
+            <div class="pdf-upload-content">
+              <input type="file" accept=".pdf" id="doc_bloco_3" />
+              <span  class="file-name">Escolha um Arquivo</span>
+            </div>
+          </div>
+          <div class="form-actions" id="buttonSalvar">
+            <button type="button" id="btn-salvar">Salvar</button>
+          </div>
+        </div>
+
+        <!-- No final do form-container -->
+
+      </div>
+    </div>
+  </div>
+
+  <script src="/Frontend/scripts/script.js"></script>
+  <script src="/Frontend/scripts/scriptFrontend.js"></script>
+  <script src="/Frontend/scripts/validacoes.js"></script>
+  <script src="/Frontend/scripts/Alunos.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login ao Sistema - CMB</title>
+    <link rel="stylesheet" href="/Frontend/css/login.css">
+  
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo"><img src="/Frontend/img/brasao_CMB.jpeg" alt=""></div>
+        <h1>Colégio Militar de Brasília</h1>
+        <h2>Sistema de Arquivo de Pastas Digital</h2>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Identificação de Usuário:</label>
+                <input type="email" id="email" required placeholder="Digite seu E-mail ou CPF">
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" required placeholder="Digite sua senha">
+            </div>
+            
+            <button type="submit">Acessar Sistema</button>
+            <a href="/templates/tela_Inicio.html" class="forgot-password">Esqueceu a senha?</a>
+        </form>
+    </div>
+    <script src="../scripts/login.js"></script>
+    <script src="/Frontend/scripts/scriptFrontend.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login ao Sistema - CMB</title>
+    <link rel="stylesheet" href="/Frontend/css/login.css">
+  
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo"><img src="/Frontend/img/brasao_CMB.jpeg" alt=""></div>
+        <h1>Colégio Militar de Brasília</h1>
+        <h2>Sistema de Arquivo de Pastas Digital</h2>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Identificação de Usuário:</label>
+                <input type="text" id="username" required placeholder="Digite seu E-mail ou CPF" style="text-transform: uppercase">
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail do Usuário:</label>
+                <input type="email" id="email" required placeholder="Digite seu E-mail ou CPF">
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" required placeholder="Digite sua senha">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Confirmma Senha:</label>
+                <input type="password" id="confirmPassword" required placeholder="Digite sua senha">
+            </div>
+            
+            <button id="saveUser" type="button">Cadastrar</button>
+           
+        </form>
+    </div>
+
+    <script src="/Frontend/scripts/cadastroUsuarios.js"></script>
+</body>
+</html>
