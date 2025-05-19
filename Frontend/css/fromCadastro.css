@@ -1,0 +1,444 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background-color: #f5f7f5;
+}
+
+.container {
+  
+  display: flex;
+  min-height: 100vh;
+  padding: 10px;
+}
+
+
+/* Sidebar */
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 100vh;
+  background-color: #fff;
+  padding: 25px;
+  border-right: 1px solid #e0e0e0;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  
+}
+
+.img_CMB {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.img_CMB img {
+  width: 150px;
+  height: 180px;
+}
+.sidebar-button {
+  padding: 12px 30px;
+  font-size: 1em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.sidebarTitulo{
+  color: #1e3c72;
+  font-size: 2.5em;
+  margin-bottom: 15px;
+  margin-top: 25px;
+}
+
+
+#navConsultar {
+  background: #28873e;
+  color: white;
+}
+
+#navEditar {
+  background-color: #ffc107;
+  color: black;
+  border: 1px solid #e0a800;
+}
+
+#navExcluir {
+  background-color: #dc3545;
+  color: white;
+  border: 1px solid #c82333;
+}
+
+#navEstatistica {
+  background-color: #6f42c1;
+  color: white;
+  border: 1px solid #563d7c;
+}
+
+.main-content {
+  flex: 1;
+  padding: 30px;
+  background-color: #fff;
+}
+
+/* Seletor Institucional */
+.institution-select {
+  margin-bottom: 15px;
+}
+
+.institution-select select {
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+  width: 250px;
+  background-color: white;
+  font-size: 16px;
+}
+
+.nationality-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#protocolo_input {
+  padding: 5px;
+  width: 250px;
+  font-size: 20px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 500;
+  text-align: center;
+  
+}
+
+#nationality{
+  max-width: 160px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Container do Formulário */
+.form-container {
+  
+  transition: background-color 0.3s ease;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 15px;
+}
+
+.form-section {
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.student-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+  
+}
+
+.studentInfo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+  
+}
+
+/* Área da Foto */
+.photo-preview {
+  width: 180px;
+  height: 250px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid #dee2e6;
+  background: #f8f9fa;
+  position: relative;
+  
+}
+
+.photo-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+  position: relative;
+  z-index: 2;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e9ecef;
+  cursor: pointer;
+  text-align: center;
+  padding: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* Coloca o placeholder na frente */
+}
+
+.photo-upload {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.has-photo img {
+  display: block !important;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: inherit;
+  font-weight: 500;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+
+h2 {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #007bff;
+  display: inline-block;
+}
+
+.documentosAnexos {
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.pdf-upload-content {
+  position: relative;
+  margin-top: 15px;
+  border-radius: 6px;
+  
+}
+
+.file-name {
+  display: block;
+  margin-top: 10px;
+  color: #bcc7be;
+  font-weight: 500;
+  background-color: #495057;
+  padding: 15px;
+  width: 300px;
+  border-radius: 6px;
+}
+
+.pdf-upload input[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.pdf-upload {
+  position: relative;
+  max-width: 500px;
+  padding: 25px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.pdf-upload.dragover {
+  border-color: #0673cd;
+  background: rgba(0, 123, 255, 0.1);
+}
+
+#btn-salvar {
+  background:  #2b5ee1;
+  width: 150px;
+  height: 90px;
+  margin-top: 35px;
+  color: #ffff;
+  border-radius: 8px;
+  border-color: #bcc7be;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#btn-salvar:hover{
+background:#1685fb ;
+border-color: #dfe3e0;
+}
+
+/* ========== RESPONSIVIDADE ========== */
+
+/* Telas menores que 1200px (Tablets grandes/Desktops pequenos) */
+@media (max-width: 1200px) {
+  .student-info {
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas em vez de 3 */
+  }
+}
+
+/* Telas menores que 992px (Tablets) */
+@media (max-width: 992px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar-container {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px;
+  }
+
+  .img_CMB {
+    margin: 10px 0;
+  }
+
+  .sidebarTitulo {
+    margin-top: 20px;
+    font-size: 2em;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  .student-info,
+  .studentInfo {
+    grid-template-columns: 1fr; /* 1 coluna em dispositivos menores */
+  }
+
+  #setEmail,
+  #setNome,
+  #setTelefone {
+    width: 100%; /* Campos ocupam largura total */
+  }
+
+  .documentosAnexos {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .pdf-upload {
+    max-width: 100%;
+  }
+}
+
+/* Telas menores que 768px (Tablets pequenos) */
+@media (max-width: 768px) {
+  .sidebar-button {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr; /* Campos em coluna única */
+  }
+
+  .nationality-select {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #nationality {
+    max-width: 100%;
+  }
+
+  .photo-preview {
+    width: 150px;
+    height: 200px;
+    margin: 0 auto;
+  }
+}
+
+/* Telas menores que 576px (Celulares) */
+@media (max-width: 576px) {
+  .sidebarTitulo {
+    font-size: 1.5em;
+    margin-top: 10px;
+  }
+
+  .institution-select select {
+    width: 100%; /* Select ocupa largura total */
+  }
+
+  #protocolo_input {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  #salvar {
+    width: 100%;
+    height: 60px;
+    margin-top: 20px;
+  }
+
+  .form-section {
+    padding: 15px;
+  }
+}
+
+/* Telas muito pequenas (menores que 400px) */
+@media (max-width: 400px) {
+  .sidebar-button {
+    padding: 8px 15px;
+    font-size: 0.8em;
+    gap: 8px;
+  }
+
+  .photo-preview {
+    width: 120px;
+    height: 160px;
+  }
+
+  .file-name {
+    width: 100%;
+  }
+}
+

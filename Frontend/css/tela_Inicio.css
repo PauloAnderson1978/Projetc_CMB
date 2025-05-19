@@ -1,0 +1,217 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #176417 20%, #5d965d 100%);
+}
+
+.container {
+  width: 100%;
+  max-width: 1500px;
+  padding: 20px;
+}
+
+.main-content {
+  text-align: center;
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.titulo h1 {
+  color: #1e3c72;
+  font-size: 2.5em;
+  
+}
+
+.titulo h3 {
+  color: #495057;
+  font-weight: 400;
+  
+}
+
+
+.img_CMB {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.img_CMB img {
+  width: 100px;
+  height: 110px;
+}
+
+.options-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.option-button {
+  padding: 20px 50px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.option-button.cadastrar {
+  background: #007bff;
+  color: white;
+}
+
+.option-button.consultar {
+  background: #28873e;
+  color: white;
+}
+
+.option-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.option-button:active {
+  transform: translateY(0);
+}
+
+.estatistica {
+  background-color: #6f42c1;
+  color: white;
+  border: 1px solid #563d7c;
+}
+
+.estatistica:hover {
+  background-color: #563d7c;
+}
+
+.validacao {
+  background-color: #28a745;
+  color: white;
+  border: 1px solid #218838;
+}
+
+.validacao:hover {
+  background-color: #218838;
+}
+
+.editar {
+  background-color: #ffc107;
+  color: black;
+  border: 1px solid #e0a800;
+}
+
+.editar:hover {
+  background-color: #e0a800;
+}
+
+.excluir {
+  background-color: #dc3545;
+  color: white;
+  border: 1px solid #c82333;
+}
+
+.excluir:hover {
+  background-color: #c82333;
+}
+
+/* Responsividade - Versão Aprimorada */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 992px) {
+  .main-content {
+    padding: 30px;
+  }
+  
+  .titulo h1 {
+    font-size: 2.2em;
+  }
+  .options-container {
+    display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+  }
+  
+  .option-button {
+    padding: 18px 40px;
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 768px) {
+  .options-container {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+  }
+  
+  .option-button {
+    width: 100%;
+    justify-content: center;
+    padding: 16px;
+  }
+  
+  .titulo h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  .titulo h3 {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    padding: 15px;
+  }
+  
+  .main-content {
+    padding: 25px 15px;
+    border-radius: 10px;
+  }
+  
+  .titulo h1 {
+    font-size: 1.8em;
+  }
+  
+  .options-container {
+    gap: 12px;
+    margin-top: 25px;
+  }
+}
+
+/* Para telas muito pequenas (menos de 400px) */
+@media (max-width: 400px) {
+  .titulo h1 {
+    font-size: 1.5em;
+  }
+  
+  .titulo h3 {
+    font-size: 0.9em;
+  }
+  
+  .option-button {
+    font-size: 1em;
+    padding: 14px;
+  }
+}

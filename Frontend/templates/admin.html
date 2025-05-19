@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Gerenciamento de Usuários</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .user-form {
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .users-list {
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .status-message {
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Painel Administrativo - Gerenciamento de Usuários</h1>
+        
+        <div class="user-form">
+            <h2>Adicionar/Editar Usuário</h2>
+            <form id="userForm">
+                <div class="form-group">
+                    <label for="username">Nome de Usuário:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Permissão:</label>
+                    <select id="role" name="role" required>
+                        <option value="admin">Administrador</option>
+                        <option value="user">Usuário Padrão</option>
+                        <option value="guest">Convidado</option>
+                    </select>
+                </div>
+
+                <button type="submit">Salvar Alterações</button>
+            </form>
+        </div>
+
+        <div class="users-list">
+            <h2>Usuários Cadastrados</h2>
+            <div id="statusMessage" class="status-message"></div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Usuário</th>
+                        <th>Permissão</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>admin</td>
+                        <td>Administrador</td>
+                        <td>
+                            <button>Editar</button>
+                            <button>Excluir</button>
+                        </td>
+                    </tr>
+                    <!-- Exemplo de usuário -->
+                    <tr>
+                        <td>usuario1</td>
+                        <td>Usuário Padrão</td>
+                        <td>
+                            <button>Editar</button>
+                            <button>Excluir</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Exemplo de JavaScript básico para manipulação do formulário
+        document.getElementById('userForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const role = document.getElementById('role').value;
+
+            // Validação básica
+            if(username && password && role) {
+                showStatus('Usuário salvo com sucesso!', 'success');
+                // Limpar formulário
+                this.reset();
+            } else {
+                showStatus('Preencha todos os campos!', 'error');
+            }
+        });
+
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('statusMessage');
+            statusDiv.textContent = message;
+            statusDiv.className = `status-message ${type}`;
+            setTimeout(() => statusDiv.textContent = '', 3000);
+        }
+    </script>
+</body>
+</html>

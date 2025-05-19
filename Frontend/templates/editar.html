@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Aluno - CMB</title>
+    <link rel="stylesheet" href="/Frontend/css/demaisTelas.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar-Options" id="sidebarOptions">
+            <div class="sidebar-container">
+                <div class="img_CMB">
+                    <img src="/Frontend/img/brasao_CMB.jpeg" alt="" />
+                </div>
+                <h1 class="sidebarTitulo">NAV</h1>
+                <a href="/Frontend/templates/tela_Inicio.html" class="sidebar-button consultar"
+          style="background: #485e61; color: white">
+          🏠 HOME
+        </a>
+        <a href="/Frontend/templates/formCadastro.html" class="sidebar-button cadastrar" style="background-color: #007bff; color: white"">
+            📝 Cadastrar
+          </a>
+        <a href="/Frontend/templates/consulta.html" class="sidebar-button consultar"
+          style="background: #28873e; color: white">
+          🔍 Consultar
+        </a>
+
+        <a href="/Frontend/templates/editar.html" class="sidebar-button editar" style="
+              background-color: #ffc107;
+              color: black;
+              border: 1px solid #e0a800;
+            ">
+          ✏️ Editar
+        </a>
+
+        <a href="/Frontend/templates/excluir.html" class="sidebar-button excluir" style="
+              background-color: #dc3545;
+              color: white;
+              border: 1px solid #c82333;
+            ">
+          ❌ Excluir
+        </a>
+
+        <a href="/Frontend/templates/estatistica.html" class="sidebar-button estatistica" style="
+              background-color: #6f42c1;
+              color: white;
+              border: 1px solid #563d7c;
+            ">
+          📊 Estatística
+        </a>
+
+        <a href="/Frontend/templates/validacao" class="sidebar-button validacao" style="
+              background-color: #28a745;
+              color: white;
+              border: 1px solid #218838;
+            ">
+          ✅ Validação
+        </a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <header>
+                <div class="titulo">
+                    <h1>Editar Cadastro</h1>
+                </div>
+            </header>
+
+            <!-- Filtros -->
+            <div class="filters">
+                <input type="text" id="filterNumber" placeholder="Número">
+                <input type="text" id="filterClass" placeholder="Turma">
+                <select id="filterYear">
+                    <option value="">Todos os Anos</option>
+                    <option>2023</option>
+                    <option>2024</option>
+                    <option>2025</option>
+                    <option>2026</option>
+                    <option>2027</option>
+                </select>
+                <button onclick="filtrarAlunos()">Aplicar Filtros</button>
+            </div>
+
+    </div>
+
+    <script src="/scripts/script.js"></script>
+    <script>
+        async function buscarAluno() {
+            const numero = document.getElementById('searchInput').value;
+            // Implementar busca via API
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+CREATE DATABASE colegio_militar;
+USE colegio_militar;
+
+CREATE TABLE nacionalidades (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    descricao VARCHAR(50) NOT NULL
+);
+
+INSERT INTO nacionalidades (descricao) VALUES
+('Brasileiro'),
+('Estrangeiro');
+
+CREATE TABLE instituicoes (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    sigla VARCHAR(15) NOT NULL,
+    descricao VARCHAR(50) NOT NULL
+);
+
+INSERT INTO instituicoes (sigla, descricao) VALUES
+('EB', 'Exército Brasileiro'),
+('FAB', 'Força Aérea Brasileira'),
+('MB', 'Marinha do Brasil'),
+('BB', 'Bombeiro'),
+('PM', 'Polícial Militar'),
+('Estrangeiro', 'Estrangeira'),
+('Concedido', 'Concursado');
+
+CREATE TABLE pais (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    telefone VARCHAR(20) NOT NULL,
+    posto VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE maes (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    telefone VARCHAR(20) NOT NULL,
+    posto VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE responsaveis (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    telefone VARCHAR(20) NOT NULL,
+    endereco TEXT NOT NULL,
+    observacoes TEXT
+);
+
+CREATE TABLE alunos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    numero VARCHAR(20) NOT NULL,
+    turma VARCHAR(20) NOT NULL,
+    ano_letivo VARCHAR(10) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    foto_path VARCHAR(255),
+    nacionalidade_id INT NOT NULL,
+    instituicao_id INT NOT NULL,
+    pai_id INT NOT NULL,
+    mae_id INT NOT NULL,
+    responsavel_id INT NOT NULL,
+    FOREIGN KEY (nacionalidade_id) REFERENCES nacionalidades(id),
+    FOREIGN KEY (instituicao_id) REFERENCES instituicoes(id),
+    FOREIGN KEY (pai_id) REFERENCES pais(id),
+    FOREIGN KEY (mae_id) REFERENCES maes(id),
+    FOREIGN KEY (responsavel_id) REFERENCES responsaveis(id)
+);
+
+CREATE TABLE documentos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    aluno_id INT NOT NULL,
+    pdf_path VARCHAR(255) NOT NULL,
+    FOREIGN KEY (aluno_id) REFERENCES alunos(id)
+);
+
+
+
+
+
+Entrar na pasta do backend e dar npm i 
