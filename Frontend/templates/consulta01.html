@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consulta de Alunos</title>
+  <link rel="stylesheet" href="/Frontend/css/fromCadastro.css" />
+</head>
+
+<body>
+  <div class="container">
+    <!-- Sidebar (mesma do formulário original) -->
+    <div class="sidebar-Options" id="sidebarOptions">
+      <div class="sidebar-container">
+        <div class="img_CMB">
+          <img src="/Frontend/img/brasao_CMB.jpeg" alt="" id="brasao_CMB" />
+        </div>
+        <h1 class="sidebarTitulo">NAV</h1>
+
+        <a href="/Frontend/templates/tela_Inicio.html" class="sidebar-button consultar"
+          style="background: #485e61; color: white">
+          🏠 HOME
+        </a>
+        <a href="/Frontend/templates/formCadastro.html" class="sidebar-button cadastrar">
+          📝 Cadastrar
+        </a>
+        <a href="/Frontend/templates/consulta.html" class="sidebar-button consultar"
+          style="background: #28873e; color: white">
+          🔍 Consultar
+        </a>
+        <a href="/Frontend/templates/editar.html" class="sidebar-button editar">
+          ✏️ Editar
+        </a>
+        <a href="/Frontend/templates/excluir.html" class="sidebar-button excluir">
+          ❌ Excluir
+        </a>
+        <a href="/Frontend/templates/estatistica.html" class="sidebar-button estatistica">
+          📊 Estatística
+        </a>
+        <a href="/Frontend/templates/validacao" class="sidebar-button validacao">
+          ✅ Validação
+        </a>
+      </div>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <div class="main-content">
+      <header>
+        <div class="titulo">
+          <h1>Colégio Militar de Brasília</h1>
+          <br />
+          <h3>Sistema de Arquivo de Pastas Digital</h3>
+          <br />
+        </div>
+      </header>
+
+      <!-- Formulário de Pesquisa -->
+      <div class="search-container">
+        <h2>Consulta de Alunos</h2>
+        <div class="search-options">
+          <label for="searchType">Tipo de Pesquisa:</label>
+          <select id="searchType">
+            <option value="aluno_numero">Número do Aluno</option>
+            <option value="nome_aluno">Nome do Aluno</option>
+            <option value="protocolo_numero">Número de Protocolo</option>
+          </select>
+          
+          <input type="text" id="searchInput" placeholder="Digite o termo de pesquisa">
+          <button id="btnPesquisar">Pesquisar</button>
+        </div>
+      </div>
+
+      <!-- Resultados da Pesquisa -->
+      <div class="results-container" id="resultsContainer">
+        <table id="resultsTable">
+          <thead>
+            <tr>
+              <th>Foto</th>
+              <th>Número</th>
+              <th>Nome</th>
+              <th>Turma</th>
+              <th>Ano</th>
+              <th>Protocolo</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="resultsBody">
+            <!-- Os resultados serão inseridos aqui via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Modal para Detalhes Completo -->
+      <div class="modal" id="detailsModal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Detalhes Completos do Aluno</h2>
+          <div id="modalContent">
+            <!-- Conteúdo será preenchido via JavaScript -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/Frontend/scripts/consultaAlunos.js"></script>
+</body>
+
+</html>

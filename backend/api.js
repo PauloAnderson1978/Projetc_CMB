@@ -6,13 +6,14 @@ const cors = require("cors");
 const sequelize = require("./config/database");
 const Usuario = require("./models/usuario");
 const Alunos = require("./models/alunos");
+const { log } = require("console");
 
 // ===========================================
 // 1. CONFIGURAÇÃO INICIAL
 // ===========================================
 
 // Cria diretório de uploads
-const uploadDir = path.join(__dirname, '../uploads');
+const uploadDir = path.join(__dirname, './uploads');
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }
@@ -148,3 +149,12 @@ const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando na porta ${PORT}`);
 });
+
+
+//=====================================================
+// 7 . resquisições GETs
+//=====================================================
+app.get('/consulta', async (req, res) => {
+  const aluno = await Alunos.findOne({where: req.query})
+  res.status(200).json(aluno)
+})
