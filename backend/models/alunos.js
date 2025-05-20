@@ -27,7 +27,7 @@ const Alunos = sequelize.define("matriculas", {
   },
   protocolo_numero: {
     type: DataTypes.STRING(15),
-    allowNull: false,
+    allowNull: true,
     unique: true,
   },
   foto_aluno: {
