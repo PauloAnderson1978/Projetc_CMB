@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
 
+
+
       const alunos = await response.json();
       console.log(alunos);
       exibirResultados(alunos);
