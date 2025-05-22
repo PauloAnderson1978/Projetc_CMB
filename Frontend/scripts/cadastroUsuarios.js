@@ -7,6 +7,9 @@ document.getElementById("saveUser").addEventListener("click",  async () => {
   const confirmSenha = document.getElementById('confirmPassword').value;
 
   try {
+    if(senha != confirmSenha) {
+      throw new Error("Senhas nao conferem")
+   }
     const response = await fetch('http://127.0.0.1:3000/usuarios', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
@@ -14,16 +17,14 @@ document.getElementById("saveUser").addEventListener("click",  async () => {
         nome,
         senha,
         email,
-        confirmSenha
       })
     });
-    
     const data = await response.json();
 
     console.log(data);
     
     if (data) {
-      alert('Aluno cadastrado com sucesso!');
+      alert('Usuário cadastrado com sucesso!');
       window.location.href = "login.html"
     } else {
       throw new Error(data.error || 'Erro desconhecido');
@@ -34,57 +35,3 @@ document.getElementById("saveUser").addEventListener("click",  async () => {
   }
 })
 
-
-// Consulta
-async function carregarAlunos() {
-    const resposta = await fetch('http://localhost:3000/alunos');
-    const alunos = await resposta.json();
-    
-    const tabela = document.createElement('table');
-    alunos.forEach(aluno => {
-        tabela.innerHTML += `
-            <tr>
-                <td>${aluno.nome}</td>
-                <td>${aluno.turma}</td>
-                <!-- Outros campos -->
-            </tr>
-        `;
-    });
-    
-    document.body.appendChild(tabela);
-}
-
-// Edição
-async function atualizarAluno(id) {
-    const dadosAtualizados = {
-        nome: document.getElementById('nome').value,
-        // Colete outros campos
-    };
-
-    await fetch(`http://localhost:3000/alunos/${id}`, {
-        method: 'PUT',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(dadosAtualizados)
-    });
-}
-
-//Exclusão
-async function excluirAluno(id) {
-    if (confirm('Confirma a exclusão?')) {
-        await fetch(`http://localhost:3000/alunos/${id}`, {method: 'DELETE'});
-        alert('Excluído com sucesso!');
-    }
-}
-
-
-// Estatísitca
-async function carregarEstatisticas() {
-  const response = await fetch('/api/alunos/estatisticas');
-  const data = await response.json();
-  
-  if (data.success) {
-    return data.data; // { instituicoes, nacionalidades, anos }
-  } else {
-    throw new Error(data.error || 'Erro ao carregar estatísticas');
-  }
-}

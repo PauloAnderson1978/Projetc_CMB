@@ -72,8 +72,17 @@
       });
 
       // PDF Upload
-const pdfInput = document.getElementById('pdfInput');
-const pdfFileName = document.getElementById('pdfFileName');
+const pdfInput = document.getElementById('doc_bloco_1');
+const pdfFileName = document.getElementById('span_bloco_1');
+
+const pdfInput2 = document.getElementById('doc_bloco_2');
+const pdfFileName2 = document.getElementById('span_bloco_2');
+
+
+const pdfInput3 = document.getElementById('doc_bloco_3');
+const pdfFileName3 = document.getElementById('span_bloco_3');
+
+
 const pdfUpload = document.querySelector('.pdf-upload');
 
 pdfInput.addEventListener('change', function(e) {
@@ -83,10 +92,52 @@ pdfInput.addEventListener('change', function(e) {
         pdfUpload.style.borderColor = '#28a745';
         pdfUpload.style.backgroundColor = 'rgba(40, 167, 69, 0.1)';
     } else {
-        pdfFileName.textContent = '';
+        pdfInput.textContent = '';
         pdfUpload.style.borderColor = '#dee2e6';
         pdfUpload.style.backgroundColor = '#f8f9fa';
     }
+});
+
+
+pdfInput2.addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (file) {
+      pdfFileName2.textContent = `Arquivo selecionado: ${file.name}`;
+      pdfUpload.style.borderColor = '#28a745';
+      pdfUpload.style.backgroundColor = 'rgba(40, 167, 69, 0.1)';
+  } else {
+      pdfInput.textContent = '';
+      pdfUpload.style.borderColor = '#dee2e6';
+      pdfUpload.style.backgroundColor = '#f8f9fa';
+  }
+});
+
+
+pdfInput3.addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (file) {
+      pdfFileName3.textContent = `Arquivo selecionado: ${file.name}`;
+      pdfUpload.style.borderColor = '#28a745';
+      pdfUpload.style.backgroundColor = 'rgba(40, 167, 69, 0.1)';
+  } else {
+      pdfInput.textContent = '';
+      pdfUpload.style.borderColor = '#dee2e6';
+      pdfUpload.style.backgroundColor = '#f8f9fa';
+  }
+});
+
+
+pdfInput.addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (file) {
+      pdfFileName.textContent = `Arquivo selecionado: ${file.name}`;
+      pdfUpload.style.borderColor = '#28a745';
+      pdfUpload.style.backgroundColor = 'rgba(40, 167, 69, 0.1)';
+  } else {
+      pdfInput.textContent = '';
+      pdfUpload.style.borderColor = '#dee2e6';
+      pdfUpload.style.backgroundColor = '#f8f9fa';
+  }
 });
 
 // Drag and Drop (opcional)

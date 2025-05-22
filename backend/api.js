@@ -33,6 +33,9 @@ const upload = multer({
   limits: { fileSize: 10 * 1024 * 1024 } 
 });
 
+
+
+
 // ===========================================
 // 2. INICIALIZAÇÃO DO EXPRESS
 // ===========================================
@@ -41,7 +44,8 @@ const app = express();
 // Middlewares
 app.use(express.json());
 app.use(cors());
-app.use("/uploads", express.static(uploadDir));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 // ===========================================
 // 3. SINCRONIZAÇÃO DO BANCO DE DADOS
@@ -157,4 +161,55 @@ app.listen(PORT, () => {
 app.get('/consulta', async (req, res) => {
   const aluno = await Alunos.findOne({where: req.query})
   res.status(200).json(aluno)
-})
+});
+
+
+// 8. Rotas para estatisticas Gerais
+// Rota para estatísticas de forças
+// Rota para estatísticas de forças
+app.get('/estatisticas/forcas', async (req, res) => {
+  try {
+    const result = await Alunos.findAll({
+      attributes: [
+        'instituicao',
+        [sequelize.fn('COUNT', sequelize.col('id')), 'total'] // Corrigido
+      ],
+      group: ['instituicao']
+    });
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Rota para estatísticas de anos letivos
+app.get('/estatisticas/anos', async (req, res) => {
+  try {
+    const result = await Alunos.findAll({
+      attributes: [
+        'ano_letivo',
+        [sequelize.fn('COUNT', sequelize.col('id')), 'total']
+      ],
+      group: ['ano_letivo']
+    });
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Rota para estatísticas de gênero
+app.get('/estatisticas/genero', async (req, res) => {
+  try {
+    const result = await Alunos.findAll({
+      attributes: [
+        'genero',
+        [sequelize.fn('COUNT', sequelize.col('id')), 'total']
+      ],
+      group: ['genero']
+    });
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
