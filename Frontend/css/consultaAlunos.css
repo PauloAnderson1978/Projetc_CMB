@@ -1,0 +1,528 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background-color: #f5f7f5;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    padding: 10px;
+}
+
+/* Sidebar */
+.sidebar-container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 100vh;
+    background-color: #fff;
+    padding: 25px;
+    border-right: 1px solid #e0e0e0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.img_CMB {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.img_CMB img {
+    width: 150px;
+    height: 180px;
+}
+
+.sidebar-button {
+    padding: 12px 30px;
+    font-size: 1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.sidebarTitulo {
+    color: #1e3c72;
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    margin-top: 25px;
+}
+
+/* Conteúdo Principal */
+.main-content {
+    margin-left: 270px;
+    flex: 1;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Cabeçalho */
+.titulo {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.titulo h1 {
+    color: #176417;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+.titulo h3 {
+    color: #176417;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.modal-content h2{
+    color: #176417;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.close{
+    position: relative;
+    color: #c82333;
+    font-size: 40px;
+    margin-left: 85%;
+    cursor: pointer;
+}
+
+/* Formulário de pesquisa */
+.search-container {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.search-container h2 {
+    color: #176417;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    font-weight: 400;
+}
+
+.search-options {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.search-options label {
+    font-weight: 500;
+    color: #176417;
+}
+
+.search-options select,
+.search-options input {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 0.9em;
+}
+
+.search-options input {
+    flex: 1;
+    min-width: 200px;
+}
+
+.search-options button {
+    padding: 8px 20px;
+    background-color: #176417;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+.search-options button:hover {
+    background-color: #164416;
+}
+
+#searchInput{
+    max-width: 400px;
+    text-align: center;
+}
+
+#searchInput:focus{
+    background-color: #4eac4e;
+    color: #fefeff;
+}
+
+/* Tabela de resultados */
+.results-container {
+    overflow-x: auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+#resultsTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+
+#resultsTable thead {
+    background-color: #1f681f;
+    color: white;
+    text-align: center;
+    
+}
+
+#resultsTable th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 450;
+    color: #ffffff;
+    
+    
+}
+
+#resultsTable td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e0e0e0;
+    vertical-align: middle;
+    font-weight: 500;
+    color: #414242;
+}
+
+#resultsTable tbody tr:hover {
+    background-color: #eaecea;
+}
+
+/* Estilo especial para a coluna de foto */
+#resultsTable td:first-child {
+    width: 80px;
+    text-align: center;
+}
+
+#resultsTable td img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Botões de ação */
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.btn-detalhes {
+    background-color: #1e3c72;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-detalhes:hover {
+    background-color: #2a5298;
+}
+
+/* Painel de detalhes */
+.details-panel {
+    display: none;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.details-panel.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.detail-section {
+    background-color: white;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.detail-section h3 {
+    color: #1e3c72;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.detail-photo {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.detail-photo img {
+    max-width: 150px;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+}
+
+.detail-info p {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.document-links a {
+    display: inline-block;
+    margin-right: 10px;
+    color: #1e3c72;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.document-links a:hover {
+    text-decoration: underline;
+}
+
+/* Botão de fechar */
+.close-details {
+    float: right;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.close-details:hover {
+    background: #c82333;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        padding: 15px;
+    }
+    
+    .search-options {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-options input,
+    .search-options select,
+    .search-options button {
+        width: 100%;
+    }
+    
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    #resultsTable {
+        font-size: 0.8em;
+    }
+    
+    #resultsTable th,
+    #resultsTable td {
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar-container {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 15px;
+    }
+    
+    .img_CMB img {
+        width: 100px;
+        height: 120px;
+    }
+    
+    .sidebar-button {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+    
+    .sidebarTitulo {
+        font-size: 1.8em;
+        margin-top: 15px;
+    }
+    
+    #resultsTable {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+
+/* Estilo geral da modal */
+.modal-details {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+/* Cabeçalhos */
+h3, h4 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+h4 {
+    font-size: 1.2rem;
+    color: #34495e;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+}
+
+/* Detalhes da foto */
+.detail-photo {
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.photo-img {
+    max-width: 150px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid #ecf0f1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Conteúdo do detalhe - informações */
+.detail-info {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Layout de grid para as linhas */
+.detail-row {
+    display: grid;
+    grid-template-columns: 1fr; /* Uma coluna por padrão */
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsivo, 300px como base */
+}
+
+.detail-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-col p {
+    font-size: 1rem;
+    color: #7f8c8d;
+}
+
+/* Links e interações */
+a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #2980b9;
+}
+
+strong {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+/* Estilos de responsividade */
+@media (max-width: 768px) {
+    .detail-row {
+        grid-template-columns: 1fr; /* Para telas menores, cada linha vira uma coluna */
+    }
+
+    .detail-info {
+        padding-left: 0;
+    }
+}
+
+/* Estilo das seções */
+h3 + .detail-row {
+    padding-top: 20px;
+}
+
+.modal-details .detail-row p,
+.modal-details .detail-col p {
+    margin-top: 5px;
+}
+
+@media (max-width: 480px) {
+    .modal-details {
+        padding: 20px;
+    }
+
+    h3, h4 {
+        font-size: 1.1rem;
+    }
+
+    p {
+        font-size: 0.95rem;
+    }
+}

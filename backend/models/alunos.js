@@ -37,6 +37,7 @@ const Alunos = sequelize.define("matriculas", {
   aluno_numero: {
     type: DataTypes.STRING(20),
     allowNull: false,
+    unique: true,
   },
   turma: {
     type: DataTypes.STRING(20),
@@ -49,10 +50,12 @@ const Alunos = sequelize.define("matriculas", {
   nome_aluno: {
     type: DataTypes.STRING(255),
     allowNull: true,
+    unique: true,
   },
   email_aluno: {
     type: DataTypes.STRING(255),
     allowNull: false,
+    unique: true,
     validate: {
       isEmail: true,
     },
@@ -64,6 +67,7 @@ const Alunos = sequelize.define("matriculas", {
   email_pai: {
     type: DataTypes.STRING(255),
     allowNull: false,
+    unique: true,
   },
   telefone_pai: {
     type: DataTypes.STRING(15),
@@ -83,6 +87,7 @@ const Alunos = sequelize.define("matriculas", {
   email_mae: {
     type: DataTypes.STRING(255),
     allowNull: false,
+    unique: true,
   },
   telefone_mae: {
     type: DataTypes.STRING(15),
@@ -102,6 +107,7 @@ const Alunos = sequelize.define("matriculas", {
   responsavel_email: {
     type: DataTypes.STRING(255),
     allowNull: false,
+    unique: true,
   },
   responsavel_endereco: {
     type: DataTypes.STRING(255),

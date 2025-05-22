@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estatísticas - CMB</title>
-    <link rel="stylesheet" href="/Frontend/css/demaisTelas.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estatísticas - CMB</title>
+  <link rel="stylesheet" href="/Frontend/css/estatisticas.css">
 </head>
+
 <body>
-    <div class="container">
-        <!-- Sidebar -->
-        <div class="sidebar-Options" id="sidebarOptions">
-            <div class="sidebar-container">
-                <div class="img_CMB">
-                    <img src="/Frontend/img/brasao_CMB.jpeg" alt="" />
-                </div>
-                <h1 class="sidebarTitulo">NAV</h1>
-                <a href="/Frontend/templates/tela_Inicio.html" class="sidebar-button consultar"
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar-Options" id="sidebarOptions">
+      <div class="sidebar-container">
+        <div class="img_CMB">
+          <img src="/Frontend/img/brasao_CMB.jpeg" alt="" />
+        </div>
+        <h1 class="sidebarTitulo">NAV</h1>
+        <a href="/Frontend/templates/tela_Inicio.html" class="sidebar-button consultar"
           style="background: #485e61; color: white">
           🏠 HOME
         </a>
-        <a href="/Frontend/templates/formCadastro.html" class="sidebar-button cadastrar" style="background-color: #007bff; color: white"">
+        <a href="/Frontend/templates/formCadastro.html" class="sidebar-button cadastrar"
+          style="background-color: #007bff; color: white"">
             📝 Cadastrar
           </a>
-        <a href="/Frontend/templates/consulta.html" class="sidebar-button consultar"
+        <a href=" /Frontend/templates/consulta.html" class="sidebar-button consultar"
           style="background: #28873e; color: white">
           🔍 Consultar
         </a>
@@ -58,47 +61,53 @@
             ">
           ✅ Validação
         </a>
-            </div>
-        </div>
-
-        <div class="main-content">
-            <header>
-                <div class="titulo">
-                    <h1>Estatísticas Institucionais</h1>
-                </div>
-            </header>
-
-            <!-- Gráficos -->
-            <div class="stats-container">
-                <div class="chart-box">
-                    <h3>Distribuição por Força</h3>
-                    <canvas id="chartForcas"></canvas>
-                </div>
-                
-                <div class="chart-box">
-                    <h3>Alunos por Ano</h3>
-                    <canvas id="chartAnos"></canvas>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
 
-    <!-- Adicione Chart.js para gráficos -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/scripts/script.js"></script>
-    <script>
-        // Exemplo de implementação de gráficos
-        const ctxForcas = document.getElementById('chartForcas').getContext('2d');
-        new Chart(ctxForcas, {
-            type: 'pie',
-            data: {
-                labels: ['EB', 'FAB', 'MB', 'PM'],
-                datasets: [{
-                    data: [65, 15, 10, 10],
-                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
-                }]
-            }
-        });
-    </script>
+    <div class="main-content">
+      <header>
+        <div class="titulo">
+          <h1>Estatísticas Institucionais</h1>
+        </div>
+      </header>
+
+      <!-- Gráficos -->
+      <div class="stats-container">
+        <div class="chart-box">
+          <h3>Distribuição por Força</h3>
+          <canvas id="chartForcas"></canvas>
+        </div>
+
+        <div class="chart-box">
+          <h3>Alunos por Ano</h3>
+          <canvas id="chartAnos"></canvas>
+        </div>
+
+        <div class="chart-box">
+          <h3>Distribuição por Gênero</h3>
+          <canvas id="chartGenero"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Adicione Chart.js para gráficos -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/Frontend/scripts/estatisticas.js"></script>
+  <script>
+    // Exemplo de implementação de gráficos
+    const ctxForcas = document.getElementById('chartForcas').getContext('2d');
+    new Chart(ctxForcas, {
+      type: 'pie',
+      data: {
+        labels: ['EB', 'FAB', 'MB', 'PM'],
+        datasets: [{
+          data: [65, 15, 10, 10],
+          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
+        }]
+      }
+    });
+  </script>
 </body>
+
 </html>

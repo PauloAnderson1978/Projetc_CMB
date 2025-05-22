@@ -19,6 +19,7 @@ body {
 
 /* Sidebar */
 .sidebar-container {
+  position: fixed;
   display: flex;
   flex-direction: column;
   width: 250px;
@@ -85,6 +86,7 @@ body {
 }
 
 .main-content {
+  margin-left: 300px;
   flex: 1;
   padding: 30px;
   background-color: #fff;
