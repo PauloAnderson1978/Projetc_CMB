@@ -213,3 +213,33 @@ app.get('/estatisticas/genero', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+// ===========================================
+// ROTA UPDATE
+// ===========================================
+// app.put('update/aluno', async (req, res) => {
+  
+// });
+
+// ===========================================
+// ROTA DELETE
+// ===========================================
+// observação: testar a rota delete
+app.delete('/aluno', async (req, res) => {
+  try {
+    const { alunoId } = req.params;
+    const deletado = await Alunos.destroy({
+      where: { 
+        id: alunoId
+      }
+    }); 
+    if(deletado) {
+      return res.status(200).json({ mensagem: 'Aluno deletado com sucesso!' });
+    } else {
+      return res.status(404).json({ erro: 'Erro ao deletar aluno!' });
+    }
+  } catch (e) {
+    console.error(`Erro ao deletar aluno: ${e}`);
+    res.status(500).json({ erro: 'Erro interno ao deletar aluno' });
+  }
+});
