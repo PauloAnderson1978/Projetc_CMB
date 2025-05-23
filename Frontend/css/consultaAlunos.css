@@ -265,11 +265,6 @@ body {
     animation: fadeIn 0.3s ease;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
 .detail-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -334,67 +329,6 @@ body {
     background: #c82333;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .main-content {
-        margin-left: 0;
-        padding: 15px;
-    }
-    
-    .search-options {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    
-    .search-options input,
-    .search-options select,
-    .search-options button {
-        width: 100%;
-    }
-    
-    .detail-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    #resultsTable {
-        font-size: 0.8em;
-    }
-    
-    #resultsTable th,
-    #resultsTable td {
-        padding: 8px 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .sidebar-container {
-        width: 100%;
-        height: auto;
-        position: relative;
-        padding: 15px;
-    }
-    
-    .img_CMB img {
-        width: 100px;
-        height: 120px;
-    }
-    
-    .sidebar-button {
-        padding: 10px 15px;
-        font-size: 0.9em;
-    }
-    
-    .sidebarTitulo {
-        font-size: 1.8em;
-        margin-top: 15px;
-    }
-    
-    #resultsTable {
-        display: block;
-        overflow-x: auto;
-    }
-}
-
 
 /* Estilo geral da modal */
 .modal-details {
@@ -429,6 +363,7 @@ p {
     color: #7f8c8d;
     margin-bottom: 10px;
 }
+
 
 /* Detalhes da foto */
 .detail-photo {
@@ -492,16 +427,6 @@ strong {
     font-weight: 600;
 }
 
-/* Estilos de responsividade */
-@media (max-width: 768px) {
-    .detail-row {
-        grid-template-columns: 1fr; /* Para telas menores, cada linha vira uma coluna */
-    }
-
-    .detail-info {
-        padding-left: 0;
-    }
-}
 
 /* Estilo das seções */
 h3 + .detail-row {
@@ -513,16 +438,28 @@ h3 + .detail-row {
     margin-top: 5px;
 }
 
-@media (max-width: 480px) {
-    .modal-details {
-        padding: 20px;
-    }
 
-    h3, h4 {
-        font-size: 1.1rem;
-    }
 
-    p {
-        font-size: 0.95rem;
-    }
+/* modal consultar*/
+.documento-input {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
+
+.documento-input label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.documento-input a {
+  display: block;
+  margin-bottom: 5px;
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+
+/*modal ATUALIZAR */
