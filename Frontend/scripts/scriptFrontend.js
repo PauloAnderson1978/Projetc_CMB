@@ -30,7 +30,8 @@ document.getElementById("saveUser").addEventListener("click",  async () => {
     console.error('Erro:', error);
     alert('Falha no cadastro: ' + error.message);
   }
-})
+});
+
 
 // Consulta
 async function carregarAlunos() {

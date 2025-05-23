@@ -50,6 +50,10 @@ document.getElementById('btn-salvar').addEventListener('click', async () => {
     formData.append('doc_bloco_2', document.getElementById('doc_bloco_2').files[0]);
     formData.append('doc_bloco_3', document.getElementById('doc_bloco_3').files[0]);
 
+
+
+   
+
     try {
         const response = await fetch('http://127.0.0.1:3000/alunos', {
             method: 'POST',

@@ -134,6 +134,82 @@ app.post("/alunos", upload.fields([
   }
 });
 
+
+
+// ===========================================
+// 9. ROTA PARA ATUALIZAÇÃO DE ALUNOS
+// ===========================================
+app.put('/atualizar-aluno/:protocolo', upload.fields([
+  { name: "foto_aluno", maxCount: 1 },
+  { name: "doc_bloco_1", maxCount: 1 },
+  { name: "doc_bloco_2", maxCount: 1 },
+  { name: "doc_bloco_3", maxCount: 1 }
+]), async (req, res) => {
+  try {
+    const { protocolo } = req.params;
+    
+    // Verifica se o aluno existe
+    const aluno = await Alunos.findOne({ where: { protocolo_numero: protocolo } });
+    if (!aluno) {
+      return res.status(404).json({ 
+        success: false, 
+        message: 'Aluno não encontrado' 
+      });
+    }
+
+    // Processa os novos arquivos
+    const newFiles = {
+      foto_aluno: req.files["foto_aluno"]?.[0]?.filename || aluno.foto_aluno,
+      doc_bloco_1: req.files["doc_bloco_1"]?.[0]?.filename || aluno.doc_bloco_1,
+      doc_bloco_2: req.files["doc_bloco_2"]?.[0]?.filename || aluno.doc_bloco_2,
+      doc_bloco_3: req.files["doc_bloco_3"]?.[0]?.filename || aluno.doc_bloco_3,
+    };
+
+    // Remove os arquivos antigos se novos foram enviados
+    if (req.files["foto_aluno"]) {
+      fs.unlinkSync(path.join(uploadDir, aluno.foto_aluno));
+    }
+    if (req.files["doc_bloco_1"]) {
+      fs.unlinkSync(path.join(uploadDir, aluno.doc_bloco_1));
+    }
+    if (req.files["doc_bloco_2"]) {
+      fs.unlinkSync(path.join(uploadDir, aluno.doc_bloco_2));
+    }
+    if (req.files["doc_bloco_3"]) {
+      fs.unlinkSync(path.join(uploadDir, aluno.doc_bloco_3));
+    }
+
+    // Atualiza os dados do aluno
+    await Alunos.update(
+      { ...req.body, ...newFiles },
+      { where: { protocolo_numero: protocolo } }
+    );
+
+    res.json({ 
+      success: true,
+      message: 'Aluno atualizado com sucesso' 
+    });
+
+  } catch (error) {
+    console.error('Erro ao atualizar aluno:', error);
+    
+    // Limpa arquivos enviados em caso de erro
+    if (req.files) {
+      Object.values(req.files).forEach(files => {
+        files.forEach(file => {
+          fs.unlinkSync(path.join(uploadDir, file.filename));
+        });
+      });
+    }
+
+    res.status(500).json({ 
+      success: false,
+      message: 'Erro ao atualizar aluno',
+      error: error.message 
+    });
+  }
+});
+
 // ===========================================
 // 5. TRATAMENTO DE ERROS GLOBAL
 // ===========================================
@@ -166,7 +242,7 @@ app.get('/consulta', async (req, res) => {
 
 // 8. Rotas para estatisticas Gerais
 // Rota para estatísticas de forças
-// Rota para estatísticas de forças
+
 app.get('/estatisticas/forcas', async (req, res) => {
   try {
     const result = await Alunos.findAll({
@@ -213,3 +289,55 @@ app.get('/estatisticas/genero', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+
+// ===========================================
+// 9. ROTA PARA EXCLUSÃO DE ALUNOS
+// ===========================================
+app.delete('/excluir-aluno/:protocolo', async (req, res) => {
+  try {
+    const { protocolo } = req.params;
+    
+    // Primeiro encontre o aluno para poder deletar os arquivos associados
+    const aluno = await Alunos.findOne({ where: { protocolo_numero: protocolo } });
+    
+    if (!aluno) {
+      return res.status(404).json({ 
+        success: false, 
+        message: 'Aluno não encontrado' 
+      });
+    }
+
+    // Deletar os arquivos associados
+    const filesToDelete = [
+      aluno.foto_aluno,
+      aluno.doc_bloco_1,
+      aluno.doc_bloco_2,
+      aluno.doc_bloco_3
+    ].filter(Boolean); // Remove valores null/undefined
+
+    filesToDelete.forEach(file => {
+      const filePath = path.join(uploadDir, file);
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
+      }
+    });
+
+    // Deletar o registro do banco de dados
+    await Alunos.destroy({ where: { protocolo_numero: protocolo } });
+
+    res.json({ 
+      success: true,
+      message: 'Aluno excluído com sucesso' 
+    });
+
+  } catch (error) {
+    console.error('Erro ao excluir aluno:', error);
+    res.status(500).json({ 
+      success: false,
+      message: 'Erro ao excluir aluno',
+      error: error.message 
+    });
+  }
+});
+
